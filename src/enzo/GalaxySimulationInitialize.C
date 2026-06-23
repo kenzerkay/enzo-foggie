@@ -133,8 +133,8 @@ int GalaxySimulationInitialize(FILE *fptr, FILE *Outfptr,
         GalaxySimulationGasHaloMetallicity,
         GalaxySimulationDiskMetallicityEnhancementFactor;
   char GalaxySimulationEquilibriumFile[MAX_LINE_LENGTH] = "equilibrium_table_50_027-Zsun.h5"; 
+  char GalaxySimulationGasParameterFile[MAX_LINE_LENGTH] = "galaxy_parameters.h5";
 
-  
   int GalaxySimulationGasHaloRotation;
   double GalaxySimulationGasHaloRotationScaleVelocity,
          GalaxySimulationGasHaloRotationScaleRadius,
@@ -261,6 +261,10 @@ int GalaxySimulationInitialize(FILE *fptr, FILE *Outfptr,
 		  &GalaxySimulationGasHaloCoreEntropy);
     ret += sscanf(line, "GalaxySimulationGasHaloRatio = %"FSYM,
 		  &GalaxySimulationGasHaloRatio);
+    if (sscanf(line, "GalaxySimulationGasHaloFile = %s", filename_holder) == 1) {
+      strcpy(GalaxySimulationGasParameterFile, filename_holder);
+      ret++;
+    }
     ret += sscanf(line, "GalaxySimulationGasHaloMetallicity = %"FSYM,
 		  &GalaxySimulationGasHaloMetallicity);
     ret += sscanf(line, "GalaxySimulationGasHaloRotation = %"ISYM,
@@ -352,6 +356,7 @@ int GalaxySimulationInitialize(FILE *fptr, FILE *Outfptr,
     GalaxySimulationGasHaloZeta2,
     GalaxySimulationGasHaloCoreEntropy,
     GalaxySimulationGasHaloRatio,
+    GalaxySimulationGasParameterFile,
     GalaxySimulationGasHaloMetallicity,
     GalaxySimulationGasHaloRotation,
     GalaxySimulationGasHaloRotationScaleVelocity,
@@ -431,6 +436,7 @@ int GalaxySimulationInitialize(FILE *fptr, FILE *Outfptr,
           GalaxySimulationGasHaloZeta2,
           GalaxySimulationGasHaloCoreEntropy,
           GalaxySimulationGasHaloRatio,
+          GalaxySimulationGasParameterFile,
           GalaxySimulationGasHaloMetallicity,
           GalaxySimulationGasHaloRotation,
           GalaxySimulationGasHaloRotationScaleVelocity,

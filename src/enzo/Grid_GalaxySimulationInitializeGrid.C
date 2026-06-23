@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
+#include <hdf5.h>
 #include "preincludes.h" 
 #include "EnzoTiming.h"
 #include "ErrorExceptions.h"
@@ -113,6 +114,124 @@ static FLOAT r2;
 static float DensityUnits, LengthUnits, TemperatureUnits = 1,
              TimeUnits, VelocityUnits, MassUnits;
 
+
+/* Table-driven initialization storage */
+static bool GalaxyTableLoaded = false;
+static double *Galaxy_x = NULL, *Galaxy_y = NULL, *Galaxy_z = NULL;
+static double *Galaxy_density_table = NULL, *Galaxy_temperature_table = NULL;
+static int Galaxy_nx = 0, Galaxy_ny = 0, Galaxy_nz = 0;
+
+static int load_galaxy_table(const char *filename) {
+  if (!filename || strlen(filename) == 0) return 0;
+  if (GalaxyTableLoaded) return 1;
+
+  hid_t file_id = H5Fopen(filename, H5F_ACC_RDONLY, H5P_DEFAULT);
+  if (file_id < 0) return 0;
+
+  // Read axis arrays
+  hid_t dset, dsp;
+  herr_t status;
+
+  // x_range
+  dset = H5Dopen(file_id, "x_range");
+  if (dset < 0) { H5Fclose(file_id); return 0; }
+  dsp = H5Dget_space(dset);
+  hsize_t nx; H5Sget_simple_extent_dims(dsp, &nx, NULL);
+  Galaxy_x = new double[nx];
+  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_x);
+  H5Sclose(dsp); H5Dclose(dset);
+
+  // y_range
+  dset = H5Dopen(file_id, "y_range");
+  if (dset < 0) { H5Fclose(file_id); return 0; }
+  dsp = H5Dget_space(dset);
+  hsize_t ny; H5Sget_simple_extent_dims(dsp, &ny, NULL);
+  Galaxy_y = new double[ny];
+  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_y);
+  H5Sclose(dsp); H5Dclose(dset);
+
+  // z_range
+  dset = H5Dopen(file_id, "z_range");
+  if (dset < 0) { H5Fclose(file_id); return 0; }
+  dsp = H5Dget_space(dset);
+  hsize_t nz; H5Sget_simple_extent_dims(dsp, &nz, NULL);
+  Galaxy_z = new double[nz];
+  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_z);
+  H5Sclose(dsp); H5Dclose(dset);
+
+  // density
+  dset = H5Dopen(file_id, "density");
+  if (dset < 0) { H5Fclose(file_id); return 0; }
+  dsp = H5Dget_space(dset);
+  hsize_t dims[3]; H5Sget_simple_extent_dims(dsp, dims, NULL);
+  Galaxy_nx = (int)dims[0]; Galaxy_ny = (int)dims[1]; Galaxy_nz = (int)dims[2];
+  size_t ntot = (size_t)Galaxy_nx * Galaxy_ny * Galaxy_nz;
+  Galaxy_density_table = new double[ntot];
+  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_density_table);
+  H5Sclose(dsp); H5Dclose(dset);
+
+  // temperature
+  dset = H5Dopen(file_id, "temperature");
+  if (dset < 0) { H5Fclose(file_id); return 0; }
+  dsp = H5Dget_space(dset);
+  hsize_t tdims[3]; H5Sget_simple_extent_dims(dsp, tdims, NULL);
+  // Expect same dims
+  Galaxy_temperature_table = new double[ntot];
+  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_temperature_table);
+  H5Sclose(dsp); H5Dclose(dset);
+
+  H5Fclose(file_id);
+  GalaxyTableLoaded = true;
+  return 1;
+}
+
+static double sample_table_trilinear(double xkpc, double ykpc, double zkpc, double *table) {
+  if (!GalaxyTableLoaded) return 0.0;
+  // find indices
+  int ix=0, iy=0, iz=0;
+  // x
+  if (xkpc <= Galaxy_x[0]) ix = 0;
+  else if (xkpc >= Galaxy_x[Galaxy_nx-1]) ix = Galaxy_nx-2;
+  else {
+    for (int i=0;i<Galaxy_nx-1;i++) if (xkpc >= Galaxy_x[i] && xkpc <= Galaxy_x[i+1]) { ix = i; break; }
+  }
+  if (ykpc <= Galaxy_y[0]) iy = 0;
+  else if (ykpc >= Galaxy_y[Galaxy_ny-1]) iy = Galaxy_ny-2;
+  else for (int i=0;i<Galaxy_ny-1;i++) if (ykpc >= Galaxy_y[i] && ykpc <= Galaxy_y[i+1]) { iy = i; break; }
+  if (zkpc <= Galaxy_z[0]) iz = 0;
+  else if (zkpc >= Galaxy_z[Galaxy_nz-1]) iz = Galaxy_nz-2;
+  else for (int i=0;i<Galaxy_nz-1;i++) if (zkpc >= Galaxy_z[i] && zkpc <= Galaxy_z[i+1]) { iz = i; break; }
+
+  double x0 = Galaxy_x[ix], x1 = Galaxy_x[ix+1];
+  double y0 = Galaxy_y[iy], y1 = Galaxy_y[iy+1];
+  double z0 = Galaxy_z[iz], z1 = Galaxy_z[iz+1];
+  double fx = (x1 == x0) ? 0.0 : (xkpc - x0)/(x1-x0);
+  double fy = (y1 == y0) ? 0.0 : (ykpc - y0)/(y1-y0);
+  double fz = (z1 == z0) ? 0.0 : (zkpc - z0)/(z1-z0);
+
+  // helper to index table assumed layout [nx][ny][nz] with C-order
+  auto idx = [&](int i,int j,int k)->size_t { return ((size_t)i*Galaxy_ny + j)*(size_t)Galaxy_nz + k; };
+
+  double v000 = table[idx(ix,iy,iz)];
+  double v100 = table[idx(ix+1,iy,iz)];
+  double v010 = table[idx(ix,iy+1,iz)];
+  double v110 = table[idx(ix+1,iy+1,iz)];
+  double v001 = table[idx(ix,iy,iz+1)];
+  double v101 = table[idx(ix+1,iy,iz+1)];
+  double v011 = table[idx(ix,iy+1,iz+1)];
+  double v111 = table[idx(ix+1,iy+1,iz+1)];
+
+  double c00 = v000*(1-fx) + v100*fx;
+  double c10 = v010*(1-fx) + v110*fx;
+  double c01 = v001*(1-fx) + v101*fx;
+  double c11 = v011*(1-fx) + v111*fx;
+
+  double c0 = c00*(1-fy) + c10*fy;
+  double c1 = c01*(1-fy) + c11*fy;
+  double c = c0*(1-fz) + c1*fz;
+  return c;
+}
+
 double gScaleHeightR, gScaleHeightz, densicm, MgasScale, Picm,
        TruncRadius, SmoothRadius, SmoothLength,Ticm;
 
@@ -170,7 +289,8 @@ int grid::GalaxySimulationInitializeGrid(double DiskRadius,
            double GasHaloZeta,
            double GasHaloZeta2,
            double GasHaloCoreEntropy,
-	         double GasHaloRatio,           
+	         double GasHaloRatio,  
+           char   *GasHaloParameterFile,             
            double GasHaloMetallicity,
            int   UseHaloRotation,
            double RotationScaleVelocity,
@@ -354,6 +474,15 @@ int grid::GalaxySimulationInitializeGrid(double DiskRadius,
   halo_init(CGM_data, this, largest_rad);
   if (debug) printf("Made halo profile\n");
 
+    /* Attempt to load HDF5 table if requested */
+  if (GasHaloParameterFile && strlen(GasHaloParameterFile) > 0) {
+    if (!load_galaxy_table(GasHaloParameterFile)) {
+      if (debug) fprintf(stderr, "Warning: could not load galaxy parameter file %s\n", GasHaloParameterFile);
+    } else {
+      if (debug) fprintf(stderr, "Loaded galaxy parameter file %s\n", GasHaloParameterFile);
+    }
+  }
+
   // for (int i=0; i<CGM_data.nbins; ++i)
   //   printf("%g %g %g %g\n", CGM_data.rad[i], CGM_data.n_rad[i], CGM_data.T_rad[i], CGM_data.press[i]);
   
@@ -418,6 +547,17 @@ int grid::GalaxySimulationInitializeGrid(double DiskRadius,
 
 	density = HaloGasDensity(r_sph, CGM_data)/DensityUnits;
 	temperature = init_temp = HaloGasTemperature(r_sph, CGM_data);
+  // If a galaxy parameter table was loaded, sample it (physical units -> convert)
+    if (GalaxyTableLoaded) {
+      // Table axes are centered on the galaxy center, so use coordinates relative to DiskPosition.
+      double x_kpc = (x - DiskPosition[0]) * LengthUnits / CM_PER_KPC;
+      double y_kpc = (y - DiskPosition[1]) * LengthUnits / CM_PER_KPC;
+      double z_kpc = (z - DiskPosition[2]) * LengthUnits / CM_PER_KPC;
+      double dens_phys = sample_table_trilinear(x_kpc, y_kpc, z_kpc, Galaxy_density_table);
+      double temp_phys = sample_table_trilinear(x_kpc, y_kpc, z_kpc, Galaxy_temperature_table);
+      if (dens_phys > 0.0) density = dens_phys / DensityUnits;
+      if (temp_phys > 0.0) { temperature = init_temp = temp_phys; }
+    }
   disk_temp = DiskTemperature;
 	
 	FLOAT xpos, ypos, zpos, rsph, zheight, theta; 
