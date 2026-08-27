@@ -120,4 +120,42 @@ May Need to Restore:
   * ActiveParticle_SmartStar.h
   * ActiveParticle_GalaxyParticle.h
 
+* Comment out: 
+  * 682-684; 414; 282-283 in RebuildHierarchy.C
+  * 1522-1530 in Read ParameterFile.C
+  * 385-386 in PrepareDensityField.C
+  * 92-111 in Grid_UpdateParticlePosition.C
+  * 187 Grid_MoveAllParticles.C
+  * 61; 69 Grid_InterpolateParticlePositons.C
+  * 797 NewGridWrite.C
+  * 115-119 Grid_DepositRefinementZone.C
+  * 80 Grid_DepositParticlePositionsLocal.C
+  * 378 Grid_DepoistParticlePositions.C
+  * 74-46 Grid_CommunicationMoveGrid.C
+  * 455 Grid_AccreteOntoAccretingParticle.C
+  * 151 Grid_AccreteOntoSmartParticle.C
+  * 767-770; 696-698; 438-439 EvolveLevel.C
   
+CommunicationCombineGrids.o: in function `CommunicationCombineGrids(HierarchyEntry*, HierarchyEntry**, double, long long)':
+CommunicationCombineGrids.C:146:(.text+0x98e): undefined reference to `grid::CommunicationSendActiveParticles(grid*, long long, bool)'
+
+CommunicationCollectParticles.o: in function `CommunicationCollectParticles(LevelHierarchyEntry**, long long, bool, bool, bool, long long)':
+CommunicationCollectParticles.C:201:(.text+0x5bb): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
+CommunicationCollectParticles.C:243:(.text+0x8cb): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
+CommunicationCollectParticles.C:292:(.text+0xaca): undefined reference to `CommunicationShareActiveParticles(long long*, ActiveParticleList<ActiveParticleType>&, long long&, ActiveParticleList<ActiveParticleType>&)'
+CommunicationCollectParticles.C:368:(.text+0xdfb): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
+CommunicationCollectParticles.C:543:(.text+0x13fa): undefined reference to `grid::CollectActiveParticles(long long, long long*&, long long&, long long&, ActiveParticleList<ActiveParticleType>&, long long)'
+CommunicationCollectParticles.C:555:(.text+0x14a6): undefined reference to `CommunicationShareActiveParticles(long long*, ActiveParticleList<ActiveParticleType>&, long long&, ActiveParticleList<ActiveParticleType>&)'
+CommunicationCollectParticles.C:628:(.text+0x1782): undefined reference to `grid::CollectActiveParticles(long long, long long*&, long long&, long long&, ActiveParticleList<ActiveParticleType>&, long long)'
+
+CommunicationReceiveHandler.o: in function `CommunicationReceiveHandler(fluxes***, long long*, long long, TopGridData*)':
+CommunicationReceiveHandler.C:304:(.text+0xc2e): undefined reference to `grid::CommunicationSendActiveParticles(grid*, long long, bool)'
+
+CommunicationSyncNumberOfParticles.o: in function `CommunicationSyncNumberOfParticles(HierarchyEntry**, long long)':
+CommunicationSyncNumberOfParticles.C:50:(.text+0x1a6): undefined reference to `grid::ReturnNumberOfActiveParticlesOfThisType(long long)'
+
+CommunicationTransferSubgridParticles.o: in function `CommunicationTransferSubgridParticles(LevelHierarchyEntry**, TopGridData*, long long)':
+CommunicationTransferSubgridParticles.C:165:(.text+0x4c2): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
+CommunicationTransferSubgridParticles.C:199:(.text+0x765): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
+CommunicationTransferSubgridParticles.C:217:(.text+0x84e): undefined reference to `CommunicationShareActiveParticles(long long*, ActiveParticleList<ActiveParticleType>&, long long&, ActiveParticleList<ActiveParticleType>&)'
+CommunicationTransferSubgridParticles.C:303:(.text+0xb74): undefined reference to `grid::TransferSubgridActiveParticles(grid**, long long, long long*&, long long, long long, ActiveParticleList<ActiveParticleType>&, bool, bool, long long, long long, long long)'
