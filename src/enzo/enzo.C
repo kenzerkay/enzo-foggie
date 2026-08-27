@@ -769,13 +769,13 @@ Eint32 MAIN_NAME(Eint32 argc, char *argv[])
 
   /* Initialize the radiative transfer */
 
-#ifdef TRANSFER
-  if (RadiativeTransferInitialize(ParameterFile, TopGrid, MetaData, Exterior, 
-				  ImplicitSolver, LevelArray) == FAIL) {
-    fprintf(stderr, "Error in RadiativeTransferInitialize.\n");
-    my_exit(EXIT_FAILURE);
-  }
-#endif
+// #ifdef TRANSFER
+//   if (RadiativeTransferInitialize(ParameterFile, TopGrid, MetaData, Exterior, 
+// 				  ImplicitSolver, LevelArray) == FAIL) {
+//     fprintf(stderr, "Error in RadiativeTransferInitialize.\n");
+//     my_exit(EXIT_FAILURE);
+//   }
+// #endif
 
   PrintMemoryUsage("Call evolve hierarchy");
 

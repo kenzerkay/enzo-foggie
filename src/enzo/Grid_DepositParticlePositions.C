@@ -375,7 +375,7 @@ int grid::DepositParticlePositions(grid *TargetGrid, FLOAT DepositTime,
       FLOAT** ActiveParticlePosition = new FLOAT*[GridRank];
       for (dim = 0; dim < GridRank; dim++)
         ActiveParticlePosition[dim] = new FLOAT[NumberOfActiveParticles];
-      this->GetActiveParticlePosition(ActiveParticlePosition);
+      // this->GetActiveParticlePosition(ActiveParticlePosition);
       
       float* ActiveParticleMassPointer = new float[NumberOfActiveParticles];
       for (i = 0; i < NumberOfActiveParticles; i++) {

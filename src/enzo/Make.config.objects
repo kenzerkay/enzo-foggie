@@ -15,29 +15,7 @@
 #-----------------------------------------------------------------------
 
 OBJS_CONFIG_LIB = \
-  MHDLoopInit.o \
-  Grid_MHDLoopInitGrid.o \
         acml_st1.o \
-	ActiveParticle.o \
-        ActiveParticleDepositMass.o \
-        ActiveParticleFinalize.o \
-        ActiveParticleFindAll.o \
-        ActiveParticleInitialize.o \
-        ActiveParticleResetAccelerations.o \
-        ActiveParticleRoutines.o \
-        ActiveParticle_AccretingParticle.o \
-        ActiveParticle_CenOstriker.o \
-        ActiveParticle_DisableParticle.o \
-        ActiveParticle_GalaxyParticle.o \
-        ActiveParticle_Kravtsov.o \
-        ActiveParticle_MirrorToParticle.o \
-        ActiveParticle_PopIII.o \
-        ActiveParticle_RadiationParticle.o \
-        ActiveParticle_Skeleton.o \
-	ActiveParticle_SmartStar.o \
-        ActiveParticle_SphereContained.o \
-        ActiveParticle_SpringelHernquist.o \
-        AdiabaticExpansionInitialize.o \
         AdjustRefineRegion.o \
         AdjustMustRefineParticlesRefineToLevel.o \
         AMRH5writer.o \
@@ -45,7 +23,6 @@ OBJS_CONFIG_LIB = \
         AnalysisBaseClass_HDF5Utils.o \
         arccosh.o \
         arcsinh.o \
-        AssignActiveParticlesToGrids.o \
         AssignGridToTaskMap.o \
         auto_show_config.o \
         auto_show_flags.o \
@@ -84,11 +61,9 @@ OBJS_CONFIG_LIB = \
         cicinterp.o \
         cie_thin_cooling_rate.o \
         cluster_maker.o \
-        ClusterInitialize.o \
 	ClusterSMBHSumGasMass.o \
         c_message.o \
         colh2diss.o \
-        CollapseTestInitialize.o \
         coll_rates.o \
         CommunicationBroadcastValue.o \
         CommunicationBufferedSend.o \
@@ -103,24 +78,17 @@ OBJS_CONFIG_LIB = \
         CommunicationReceiveFluxes.o \
         CommunicationReceiveHandler.o \
         CommunicationSendFluxes.o \
-        CommunicationShareActiveParticles.o \
         CommunicationShareGrids.o \
         CommunicationShareParticles.o \
         CommunicationShareStars.o \
         CommunicationSyncNumberOfParticles.o \
-        CommunicationTransferActiveParticles.o \
         CommunicationTransferParticlesOpt.o \
         CommunicationTransferStarsOpt.o \
 	CommunicationTransferSubgridParticles.o \
         CommunicationTranspose.o \
-        CommunicationUpdateActiveParticleCount.o \
         CommunicationUpdateStarParticleCount.o \
         CommunicationUtilities.o \
         ComputeDomainBoundaryMassFlux.o \
-	ConductionBubbleInitialize.o \
-	ConductionCloudInitialize.o \
-	ConductionTestInitialize.o \
-	ConvertParticles2ActiveParticles.o \
         comp_accel.o \
         ComputePotentialFieldLevelZero.o \
         ComputeRandomForcingNormalization.o \
@@ -135,18 +103,15 @@ OBJS_CONFIG_LIB = \
         cool_multi_lum.o \
         cool_multi_time.o \
         cool_time.o \
-        CoolingTestInitialize.o \
         CopyParticlesAcrossPeriodicBoundaries.o \
         CopyOverlappingParticleMassFields.o \
         CopyOverlappingZones.o \
 	CopyZonesFromOldGrids.o \
-	CosmoIonizationInitialize.o \
         CosmologyComputeExpansionFactor.o \
         CosmologyComputeExpansionTimestep.o \
         CosmologyComputeTimeFromRedshift.o \
         CosmologyGetUnits.o \
         CosmologyReadParameters.o \
-        CosmologySimulationInitialize.o \
         CosmologyTable.o \
         CosmologyWriteParameters.o \
         cray_x1_fft64.o \
@@ -155,21 +120,16 @@ OBJS_CONFIG_LIB = \
         CreateSmoothedDarkMatterFields.o \
         CreateSUBlingList.o \
         CreateFluxes.o \
-        CRShockTubesInitialize.o \
-        CRTransportTestInitialize.o \
         InitializeFluxes.o \
         DeleteFluxes.o \
         DeleteSUBlingList.o \
-        DepositActiveParticleMassFlaggingField.o \
         DepositBaryons.o \
         DepositParticleMassField.o \
         DepositParticleMassFlaggingField.o \
 	DetermineNumberOfNodes.o \
 	DetermineParallelism.o \
 	DetermineSubgridSizeExtrema.o \
-	DetermineSEDParameters.o \
     	DistributeFeedbackZone.o \
-        DoubleMachInitialize.o \
         E_ColumnFormat.o \
         ealFloat.o \
         ealInt.o \
@@ -195,13 +155,9 @@ OBJS_CONFIG_LIB = \
         ExternalBoundary_InitializeExternalBoundaryFaceIO.o \
         ExternalBoundary_Prepare.o \
         ExternalBoundary_ReadExternalBoundary.o \
-        ExternalBoundary_SetDoubleMachBoundary.o \
         ExternalBoundary_SetExternalBoundaryIO.o \
         ExternalBoundary_SetExternalBoundaryParticles.o \
-        ExternalBoundary_SetShockPoolBoundary.o \
         ExternalBoundary_SetGalaxySimulationBoundary.o \
-        ExternalBoundary_SetWavePoolBoundary.o \
-        ExternalBoundary_SetWengenCollidingFlowBoundary.o \
         ExternalBoundary_WriteExternalBoundary.o \
         ExtraOutput.o\
         ExtractSection.o \
@@ -250,10 +206,8 @@ OBJS_CONFIG_LIB = \
 	fortio.o \
 	fourn.o \
 	FreeRealMem.o \
-	FreeExpansionInitialize.o \
 	FreezeRateData.o \
         FriendOfFriend.o \
-	FSMultiSourceInitialize.o \
 	FSProb_ComputeOpacityLW.o \
 	FSProb_constructor.o \
 	FSProb_destructor.o \
@@ -333,16 +287,11 @@ OBJS_CONFIG_LIB = \
 	gFLDSplit_WriteParameters.o \
         GrackleReadParameters.o \
         GrackleWriteParameters.o \
-	GravityEquilibriumTestInitialize.o \
 	Grid_AccelerationBoundaryRoutines.o \
 	Grid_AccessBaryonFields.o \
     	Grid_AccreteOntoAccretingParticle.o \
     	Grid_AccreteOntoSmartStarParticle.o \
-    	Grid_ActiveParticleHandler.o \
-    	Grid_AddActiveParticle.o \
-    	Grid_AddActiveParticles.o \
 	Grid_AddBaryonsToGravitatingMassField.o \
-	Grid_AddExternalAcceleration.o \
 	Grid_AddExternalPotentialField.o \
 	Grid_AddFeedbackSphere.o \
 	Grid_AddFieldMassToMassFlaggingField.o \
@@ -355,12 +304,10 @@ OBJS_CONFIG_LIB = \
 	Grid_AddToBoundaryFluxes.o \
 	Grid_AllocateGrids.o \
 	Grid_AnalyzeTrackPeaks.o \
-    	Grid_AppendActiveParticlesToList.o \
 	Grid_AppendForcingToBaryonFields.o \
         Grid_ApplyBoundsToBaryonFields.o \
     	Grid_ApplyGalaxyParticleFeedback.o \
     	Grid_ApplyGalaxyParticleGravity.o \
-    	Grid_ApplySmartStarParticleFeedback.o \
 	Grid_ApplyTimeAction.o \
     	Grid_AveragedVelocityAtCell.o \
 	Grid_CalculateAngularMomentum.o \
@@ -383,22 +330,17 @@ OBJS_CONFIG_LIB = \
 	Grid_ClearMassFlaggingField.o \
 	Grid_ClearParticleAccelerations.o \
 	Grid_ClearParticleMassFlaggingField.o \
-	Grid_ClusterInitializeGrid.o \
 	Grid_ClusterSMBHFeedback.o \
         Grid_ClusterSMBHEachGridGasMass.o \
-	Grid_CollapseTestInitializeGrid.o \
-    	Grid_CollectActiveParticles.o \
         Grid_CollectGridInformation.o \
         Grid_CollectParticles.o \
         Grid_CollectParticleMassFlaggingField.o \
         Grid_CollectStars.o \
 	Grid_CommunicationMoveGrid.o \
 	Grid_CommunicationReceiveRegion.o \
-    	Grid_CommunicationSendActiveParticles.o \
 	Grid_CommunicationSendParticles.o \
 	Grid_CommunicationSendStars.o \
 	Grid_CommunicationSendRegion.o \
-    	Grid_CommunicationTransferActiveParticles.o \
 	Grid_CommunicationTransferParticlesOpt.o \
 	Grid_CommunicationTransferStarsOpt.o \
 	Grid_ComovingExpansionTerms.o \
@@ -419,7 +361,6 @@ OBJS_CONFIG_LIB = \
 	Grid_ComputeDustTemperatureField.o \
 	Grid_ComputeElementalDensity.o \
 	Grid_ComputeEnergy.o \
-	Grid_ComputeExternalNohBoundary.o \
 	Grid_ComputeGammaField.o \
         Grid_ComputeHeat.o \
 	Grid_ComputeLuminosity.o \
@@ -433,15 +374,10 @@ OBJS_CONFIG_LIB = \
 	Grid_ComputeVertexCenteredField.o \
 	Grid_ComputeXrayEmissivity.o \
         Grid_ConductHeat.o \
-	Grid_ConductionBubbleInitialize.o \
-	Grid_ConductionCloudInitialize.o \
-	Grid_ConductionTestInitialize.o \
 	Grid_constructor.o \
     	Grid_ConvertColorFieldsToFractions.o \
 	Grid_ConvertTotalEnergyToGasEnergy.o \
 	Grid_ConvertToNumpy.o \
-	Grid_CoolingTestResetEnergies.o \
-	Grid_CoolingTestInitializeGrid.o \
     	Grid_CopyActiveZonesFromGrid.o \
 	Grid_CopyBaryonFieldToOldBaryonField.o \
 	Grid_CopyOverlappingMassField.o \
@@ -451,15 +387,9 @@ OBJS_CONFIG_LIB = \
 	Grid_CopyZonesFromGridCountOnly.o \
 	Grid_CopyZonesFromGrid.o \
 	Grid_CorrectForRefinedFluxes.o \
-	Grid_CosmoIonizationInitializeGrid.o \
-	Grid_CosmologyInitializeParticles.o \
-	Grid_CosmologySimulationInitializeGrid.o \
 	Grid_CreateChildParticles.o \
 	Grid_CreateFieldArray.o \
 	Grid_CreateParticleTypeGrouping.o \
-	Grid_CRShockTubesInitializeGrid.o \
-        Grid_CRTransportTestInitialize.o \
-    	Grid_DebugActiveParticles.o \
 	Grid_DebugCheck.o \
 	Grid_DeleteAllButParticles.o \
 	Grid_DeleteAllFields.o \
@@ -473,9 +403,7 @@ OBJS_CONFIG_LIB = \
 	Grid_DepositPositions.o \
     	Grid_DepositRefinementZone.o \
 	Grid_destructor.o \
-	Grid_DetermineActiveParticleTypes.o \
 	Grid_DetachForcingFromBaryonFields.o \
-	Grid_DoubleMachInitializeGrid.o \
 	Grid_FastSiblingLocatorAddGrid.o \
 	Grid_FastSiblingLocatorFindSiblings.o \
 	Grid_FindMassinRegion.o \
@@ -507,8 +435,6 @@ OBJS_CONFIG_LIB = \
 	Grid_FlagCellsToBeRefinedBySecondDerivative.o \
 	Grid_FlagRefinedCells.o \
 	Grid_FlagGridArray.o \
-	Grid_FreeExpansionInitializeGrid.o \
-	Grid_FSMultiSourceInitializeGrid.o \
 	Grid_GadgetCalculateCooling.o \
 	Grid_GadgetComputeTemperatureDEF.o \
 	Grid_GadgetComputeTemperature.o \
@@ -519,13 +445,11 @@ OBJS_CONFIG_LIB = \
 	Grid_Gadgetfindabundancesandrates.o \
 	Grid_GadgetEquilibriumCooling.o \
 	Grid_GalaxySimulationInitializeGrid.o \
-    	Grid_GetActiveParticlePosition.o \
         Grid_GetEnclosedMass.o \
         Grid_GetEnclosedMassInShell.o \
         Grid_GetProjectedBoundaryFluxes.o \
         Grid_GrackleWrapper.o \
         Grid_GrackleCustomCoolRate.o \
-        Grid_GravityEquilibriumTestInitializeGrid.o \
         Grid_Group_WriteGridInterpolate.o \
         Grid_Group_WriteGrid.o \
         Grid_Group_ReadGrid.o \
@@ -533,7 +457,6 @@ OBJS_CONFIG_LIB = \
         New_Grid_ReadGrid.o \
 	Grid_IdentifyColourFields.o \
 	Grid_IdentifyTracerFluidFields.o \
-	Grid_HydroShockTubesInitializeGrid.o \
 	Grid_IdentifyShockSpeciesFields.o \
 	Grid_IdentifyGloverSpeciesFields.o \
         Grid_IdentifyNewSubgrids.o \
@@ -541,7 +464,6 @@ OBJS_CONFIG_LIB = \
         Grid_IdentifyPhysicalQuantities.o \
 	Grid_IdentifyRadiativeTransferFields.o \
         Grid_IdentifySpeciesFields.o \
-	Grid_ImplosionInitializeGrid.o \
 	Grid_InheritProperties.o \
 	Grid_InitializeGravitatingMassField.o \
 	Grid_InitializeGravitatingMassFieldParticles.o \
@@ -553,31 +475,24 @@ OBJS_CONFIG_LIB = \
 	Grid_InterpolateParticlesToGrid.o \
 	Grid_InterpolatePositions.o \
         Grid_InterpolateStarParticlesToGrid.o \
-	Grid_KHInitializeGrid.o \
-	Grid_KHInitializeGridRamp.o \
         Grid_MagneticFieldResetter.o \
 	Grid_MirrorStarParticles.o \
 	Grid_MoveAllParticles.o \
 	Grid_MoveAllStars.o \
 	Grid_MoveParticlesFOF.o \
 	Grid_MoveSubgridParticlesFast.o \
-    	Grid_MoveSubgridActiveParticles.o \
 	Grid_MoveSubgridParticles.o \
 	Grid_MoveSubgridStars.o \
 	Grid_MultiSpeciesHandler.o \
 	Grid_MustRefineParticlesFlagFromList.o \
         Grid_MustRefineParticlesFlagInRegion.o \
-	Grid_NestedCosmologySimulationInitializeGrid.o \
-	Grid_NohInitializeGrid.o \
         Grid_OldStarFeedback.o \
         Grid_AddStellarWind.o \
-	Grid_OneZoneFreefallTestInitializeGrid.o \
 	Grid_OutputAsParticleData.o \
 	Grid_OutputStarParticleInformation.o \
         Grid_ParticleSplitter.o \
         Grid_PoissonSolver.o                    \
         Grid_PoissonSolverCGA.o                 \
-        Grid_PoissonSolverTestInitializeGrid.o  \
         Grid_PrepareBoundaryFluxes.o \
         Grid_PrepareBoundaryMassFluxFieldNumbers.o \
         Grid_PrepareFFT.o \
@@ -587,43 +502,23 @@ OBJS_CONFIG_LIB = \
         Grid_PreparePeriodicGreensFunction.o \
         Grid_PreparePotentialField.o \
         Grid_PrepareRandomForcingNormalization.o \
-        Grid_PressurelessCollapseInitialize.o \
         Grid_ProjectSolutionToParentGrid.o \
         Grid_ProjectToPlane.o \
         Grid_ProjectToPlane2.o \
-        Grid_ProtostellarCollapseInitializeGrid.o \
-	Grid_PutSinkRestartInitialize.o \
-	Grid_RadHydroConstTestInitializeGrid.o \
-	Grid_RadHydroGreyMarshakWaveInitializeGrid.o \
-	Grid_RadHydroPulseTestInitializeGrid.o \
-	Grid_RadHydroRadShockInitializeGrid.o \
-	Grid_RadHydroStreamTestInitializeGrid.o \
 	Grid_RadiationComputeDensities.o \
-	Grid_RadiatingShockInitializeGrid.o \
 	Grid_ReadGrid.o \
 	Grid_RemoveMassFromGrid.o \
-        Grid_CosmologyReadParticles3D.o \
         Grid_ReadHierarchyInformationHDF5.o \
 	Grid_ReadRandomForcingFields.o \
-    	Grid_RemoveActiveParticle.o \
 	Grid_RemoveForcingFromBaryonFields.o \
 	Grid_RemoveParticle.o \
 	Grid_RestoreEnergyConsistency.o \
 	Grid_ReturnFluxDims.o \
 	Grid_ReturnGridInfo.o \
-    	Grid_ReturnNumberOfActiveParticlesOfThisType.o \
         Grid_ReturnNumberOfParticlesOfThisType.o \
 	Grid_ReturnNumberOfStarParticles.o \
 	Grid_ReturnParticleEntry.o \
 	Grid_ReturnStarStatistics.o \
-	Grid_RHIonizationClumpInitializeGrid.o \
-	Grid_RHIonizationSteepInitializeGrid.o \
-	Grid_RHIonizationTestInitializeGrid.o \
-	Grid_RotatingCylinderInitialize.o \
-	Grid_RotatingDiskInitializeGrid.o \
-	Grid_RotatingSphereInitialize.o \
-	Grid_SedovBlastInitializeGrid.o \
-	Grid_SedovBlastInitializeGrid3D.o \
 	Grid_SetExternalBoundaryValues.o \
 	Grid_SetFlaggingField.o \
 	Grid_SetFlaggingFieldStaticRegions.o \
@@ -632,9 +527,6 @@ OBJS_CONFIG_LIB = \
 	Grid_SetMinimumSupport.o \
 	Grid_SetNewParticleIndex.o \
 	Grid_SetParticleMassFlaggingField.o \
-	Grid_ShearingBoxInitializeGrid.o \
-        Grid_ShearingBox2DInitializeGrid.o \
-        Grid_ShearingBoxStratifiedInitializeGrid.o \
 	Grid_ShocksHandler.o \
 	Grid_SolveForPotential.o \
         Grid_SolveHydroEquations.o \
@@ -644,27 +536,13 @@ OBJS_CONFIG_LIB = \
         Grid_SolveRadiativeCooling.o \
         Grid_SolveRateAndCoolEquations.o \
         Grid_SolveRateEquations.o \
-        Grid_SortActiveParticlesByNumber.o \
         Grid_SortParticlesByNumber.o \
         Grid_SortParticlesByType.o \
-        Grid_SphericalInfallGetProfile.o \
-        Grid_SphericalInfallInitializeGrid.o \
         Grid_StarParticleHandler.o \
-	Grid_StratifiedMediumExplosionInitialize.o \
-        Grid_SupernovaRestartInitialize.o \
         Grid_SubtractAccretedMassFromSphere.o \
-        Grid_TestGravityCheckResults.o \
-        Grid_TestGravityInitializeGrid.o \
-        Grid_TestGravityMotionInitializeGrid.o \
-        Grid_TestGravitySphereCheckResults.o \
-        Grid_TestGravitySphereInitializeGrid.o \
-        Grid_TestOrbitInitializeGrid.o \
-	Grid_TestStarParticleInitializeGrid.o \
-	Grid_TestDoubleStarParticleInitializeGrid.o \
         Grid_TracerParticleCreateParticles.o \
         Grid_TracerParticleOutputData.o \
         Grid_TracerParticleSetVelocity.o \
-        Grid_TransferSubgridActiveParticles.o \
         Grid_TransferSubgridParticles.o \
         Grid_TransferSubgridStars.o \
         Grid_TurbulenceSimulationInitialize.o \
@@ -682,9 +560,7 @@ OBJS_CONFIG_LIB = \
         Grid_WriteNewMovieDataSeparateParticles.o \
         Grid_WriteStuff.o \
         Grid_WriteTaskMap.o \
-        Grid_ZeldovichPancakeInitializeGrid.o \
         Grid_ZeroSolutionUnderSubgrid.o \
-        Grid_ZeusSolver.o \
 	Grid_xEulerSweep.o \
 	Grid_yEulerSweep.o \
 	Grid_zEulerSweep.o \
@@ -695,12 +571,10 @@ OBJS_CONFIG_LIB = \
         h5utilities.o \
 	HilbertCurve3D.o \
         Hierarchy_DeleteHierarchyEntry.o \
-	HydroShockTubesInitialize.o \
         ibm_fft64.o \
         ibm_st1_fft64.o \
         I_ColumnFormat.o \
         IdentifyNewSubgridsBySignature.o \
-        ImplosionInitialize.o \
 	InexactNewton.o \
 	InexactNewton_constructor.o \
 	InexactNewton_destructor.o \
@@ -710,7 +584,6 @@ OBJS_CONFIG_LIB = \
         InitializeCloudyCooling.o \
 	InitializeEquilibriumCoolData.o \
 	InitializeGadgetEquilibriumCoolData.o \
-        InitializeLocal.o \
         InitializeLymanWernerTable.o \
 	InitializeHM12Photorates.o \
         InitializeMovieFile.o \
@@ -735,7 +608,6 @@ OBJS_CONFIG_LIB = \
 	intprim.o \
         intvar.o \
         Isdigit.o \
-        KHInitialize.o \
         LevelHierarchy_AddLevel.o \
         lgrg.o \
         ListIO.o \
@@ -759,17 +631,14 @@ OBJS_CONFIG_LIB = \
         multi_cool.o \
         MultigridSolver.o \
         mused.o \
-        NestedCosmologySimulationInitialize.o \
         ngpinterp.o \
         ngp_deposit.o \
         ngp_deposit_c.o \
-        NohInitialize.o \
         nr_1d.o \
         nr_2d.o \
         nr_3d.o \
         nr_st1.o \
 	NullProblem.o \
-	OneZoneFreefallTestInitialize.o \
         OutputAsParticleData.o \
 	OutputCoolingTimeOnly.o \
 	OutputDustTemperatureOnly.o \
@@ -783,7 +652,6 @@ OBJS_CONFIG_LIB = \
 	performance.o \
         pgas2d_dual.o \
         pgas2d.o \
-        PoissonSolverTestInitialize.o \
         pop3_color_maker.o \
         pop3_color_maker_c.o \
         pop3_maker.o \
@@ -793,9 +661,7 @@ OBJS_CONFIG_LIB = \
 	PrepareDensityField.o \
         PrepareGravitatingMassField.o \
         PrepareIsolatedGreensFunction.o \
-        PressurelessCollapseInitialize.o \
         ProblemType.o \
-        ProblemType_RotatingCylinder.o \
         ProblemType_CollapsingCoolingCloud.o \
 	ProblemType_ExplodingCloud.o \
 	ProblemType_MagneticReconnection.o \
@@ -808,7 +674,6 @@ OBJS_CONFIG_LIB = \
         projplane.o \
         prolong.o \
         prolong_tsc.o \
-        ProtostellarCollapseInitialize.o \
         ProtoSubgrid_AcceptableGrid.o \
         ProtoSubgrid_CleanUp.o \
         ProtoSubgrid_ComputeSecondDerivative.o \
@@ -820,15 +685,8 @@ OBJS_CONFIG_LIB = \
         ProtoSubgrid_LargeAxisRatioCheck.o \
         ProtoSubgrid_ReturnNthLongestDimension.o \
         ProtoSubgrid_ShrinkToMinimumSize.o \
-	PutSinkRestartInitialize.o \
         QuickSortAndDrag.o \
-	RadHydroConstTestInitialize.o \
-	RadHydroGreyMarshakWaveInitialize.o \
-	RadHydroPulseTestInitialize.o \
-	RadHydroRadShockInitialize.o \
-	RadHydroStreamTestInitialize.o \
 	RadiationGetUnits.o \
-	RadiatingShockInitialize.o \
         RadiationFieldCalculateRates.o \
         RadiationFieldLymanWernerTable.o \
         RadiationFieldUpdate.o \
@@ -853,24 +711,16 @@ OBJS_CONFIG_LIB = \
         RebuildHierarchy.o \
         RecalibrateAccretingMass.o \
         RecalibrateMBHFeedbackThermalRadius.o \
-        RecordTotalActiveParticleCount.o \
         ReduceFragmentation.o \
 	Reduce_Times.o \
         remap.o \
         ReportMemoryUsage.o \
         ReturnWallTime.o \
-	RHIonizationClumpInitialize.o \
-	RHIonizationSteepInitialize.o \
-	RHIonizationTestInitialize.o \
         rotate2d.o \
         rotate3d.o \
-        RotatingCylinderInitialize.o \
-	RotatingDiskInitialize.o \
-        RotatingSphereInitialize.o \
         s66_st1.o \
         s90_st1.o \
 	SearchUtilities.o \
-        SedovBlastInitialize.o \
         select_fft.o \
 	SetBoundaryConditions.o \
         SetDefaultGlobalValues.o \
@@ -879,12 +729,7 @@ OBJS_CONFIG_LIB = \
         SetStellarFeedbackEfficiency.o \
         SetStellarMassThreshold.o \
         sgi_st1_fft64.o \
-        ShearingBoxInitialize.o \
-        ShearingBox2DInitialize.o \
-        ShearingBoxStratifiedInitialize.o \
 	ShellSortAndDrag.o \
-        ShockInABoxInitialize.o \
-        ShockPoolInitialize.o \
         sink_maker.o \
         smooth_deposit.o \
         smooth_deposit_c.o \
@@ -893,7 +738,6 @@ OBJS_CONFIG_LIB = \
         solve_rate.o \
         solve_rate_cool.o \
         SortCompareFunctions.o \
-        SphericalInfallInitialize.o \
         StarListRoutines.o \
         StarParticleAccretion.o \
         StarParticleAddFeedback.o \
@@ -946,17 +790,7 @@ OBJS_CONFIG_LIB = \
 	star_maker10.o \
 	star_maker_h2reg.o \
         star_maker_ssn.o \
-	StratifiedMediumExplosionInitialize.o \
-        SupernovaRestartInitialize.o \
         SysMkdir.o \
-        TestGravityCheckResults.o \
-        TestGravityInitialize.o \
-        TestGravityMotion.o \
-        TestGravitySphereCheckResults.o \
-        TestGravitySphereInitialize.o \
-        TestOrbitInitialize.o \
-	TestStarParticleInitialize.o \
-	TestDoubleStarParticleInitialize.o \
         TracerParticleCreation.o \
 	TransposeRegionOverlap.o \
         tscint1d.o \
@@ -969,9 +803,7 @@ OBJS_CONFIG_LIB = \
 	UpdateLocalDatabase.o \
         UpdateParticlePositions.o \
         utilities.o \
-        uuid.o \
         wall_clock.o \
-        WavePoolInitialize.o \
         wrapper1d.o \
         wrapper2d.o \
         wrapper3d.o \
@@ -992,24 +824,14 @@ OBJS_CONFIG_LIB = \
         WriteTaskMap.o \
         WriteTracerParticleData.o \
         WriteUnits.o \
-        ZeldovichPancakeInitialize.o \
-        ZeusUtilities.o \
-        ZeusSource.o \
-        Zeus_xTransport.o \
-        Zeus_yTransport.o \
-        Zeus_zTransport.o \
 	Grid_MHD_Diagnose.o \
 	Grid_MHDCTEnergyToggle.o\
-	MHDBlastInitialize.o\
-    	Grid_MHDBlastInitializeGrid.o\
     	Grid_MHD_ProjectFace.o\
     	Grid_ClearAvgElectricField.o\
     	ExternalBoundary_SetMagneticBoundary.o\
    	 mhd_dt.o\
     	 Grid_MHD_UpdateMagneticField.o\
-    	 Grid_MHDOrszagTangInitGrid.o \
     	 Grid_MHD_SetupDims.o \
-    	 MHDOrszagTangInit.o \
     	 MHDCT_ParameterJuggle.o \
     	 MHDCTSetupFieldLabels.o \
     	 mhd_li.o\
@@ -1044,19 +866,9 @@ OBJS_CONFIG_LIB = \
    Grid_SGSUtilities.o \
    Grid_SGSAddEMFTerms.o \
    Grid_SGSAddMomentumTerms.o \
-   LightBosonInitialize.o \
-   Grid_LightBosonInitialize.o \
-   ZeusFDM.o \
-   Zeus_xTransport_FDM.o \
-   Zeus_yTransport_FDM.o \
-   Zeus_zTransport_FDM.o \
    Grid_SchrodingerSolver.o \
    rk4.o \
    SchrodingerAddPotential.o \
-   ParallelFDMCollapseInitialize.o \
-   Grid_ParallelFDMCollapseInitialize.o \
-   FDMCollapse.o \
-   Grid_FDMCollapse.o \
    PopIIIRotationModel.o
 
 #-----------------------------------------------------------------------
@@ -1072,7 +884,6 @@ POBJS_CONFIG_LIB = \
 	CreateSourceClusteringTree.o \
 	DeletePhotonPackage.o \
 	DeleteRadiationSource.o \
-	EvolvePhotons.o \
 	FindCrossSection.o \
 	FindRootGrid.o \
 	FindSuperSource.o \
@@ -1106,11 +917,8 @@ POBJS_CONFIG_LIB = \
         Grid_InitializeSource.o \
 	Grid_InterpolateRadiationFromParent.o \
         Grid_MergePausedPhotonPackages.o \
-        Grid_RegridPausedPhotonPackage.o \
         Grid_MoveAllPhotonPackages.o \
 	Grid_PhotonPeriodicBoundary.o \
-        Grid_PhotonTestInitializeGrid.o \
-        Grid_PhotonTestRestartInitializeGrid.o \
         Grid_PhotonSortLinkedLists.o \
         Grid_ReassignSuperSources.o \
         Grid_ReturnSubgridMarker.o \
@@ -1118,33 +926,12 @@ POBJS_CONFIG_LIB = \
         Grid_SetSubgridMarkerFromSibling.o \
         Grid_SetSubgridMarkerFromSubgrid.o \
         Grid_SubgridMarkerPostParallel.o \
-        Grid_Shine.o \
         Grid_TestRadiatingStarParticleInitializeGrid.o \
-        Grid_TransportPhotonPackages.o \
-        Grid_WalkPhotonPackage.o \
         LinkedListRoutines.o \
 	PhotonPackageRoutines.o \
-	PhotonTestInitialize.o \
-	PhotonTestRestartInitialize.o \
-	RadiativeTransferCallFLD.o \
-        RadiativeTransferComputeTimestep.o \
-	RadiativeTransferHealpixRoutines64.o \
-	RadiativeTransferLoadBalanceRevert.o \
-        RadiativeTransferInitialize.o \
-        RadiativeTransferPrepare.o \
-        RadiativeTransferReadParameters.o \
-        RadiativeTransferWriteParameters.o \
-	RadiativeTransferMoveLocalPhotons.o \
-	RadiativeTransferLW.o \
-	RadiativeTransferLWShielding.o \
-	RadiativeTransferH2II.o \
-	RadiativeTransferIR.o \
-	RadiativeTransferIonization.o \
-	RadiativeTransferXRays.o \
         ReadPhotonSources.o \
         ReadRadiativeTransferSpectrumTable.o \
         ReassignSuperSources.o \
-        RestartPhotons.o \
         ReturnValuesFromSpectrumTable.o \
         SetSubgridMarker.o \
         SplitPhotonPackage.o \
@@ -1156,19 +943,11 @@ POBJS_CONFIG_LIB = \
 
 OBJS_HYDRO_RK = \
 	hydro_rk/ModifiedBesselFunctions.o \
-	hydro_rk/AGNDiskInitialize.o \
-        hydro_rk/Collapse1DInitialize.o \
-        hydro_rk/Collapse3DInitialize.o \
         hydro_rk/ComputeDednerWaveSpeeds.o \
         hydro_rk/EvolveLevel_RK2.o \
-        hydro_rk/GalaxyDiskInitialize.o \
         hydro_rk/Grid_AddSelfGravity.o \
         hydro_rk/Grid_AddViscosity.o \
-        hydro_rk/Grid_AGNDiskInitializeGrid.o \
-        hydro_rk/Grid_Collapse1DInitializeGrid.o \
-        hydro_rk/Grid_Collapse3DInitializeGrid.o \
         hydro_rk/Grid_CopyOldBaryonFieldToBaryonField.o \
-        hydro_rk/Grid_GalaxyDiskInitializeGrid.o \
         hydro_rk/Grid_Hydro3D.o \
 	hydro_rk/Grid_ReturnHydroRKPointers.o \
 	hydro_rk/Grid_ReturnOldHydroRKPointers.o \
@@ -1178,14 +957,12 @@ OBJS_HYDRO_RK = \
         hydro_rk/Grid_SetFloor.o \
 	hydro_rk/Grid_SetNumberOfColours.o \
         hydro_rk/Grid_SourceTerms.o \
-        hydro_rk/Grid_TurbulenceInitializeGrid.o \
         hydro_rk/Grid_UpdatePrim.o \
         hydro_rk/Grid_ZeroFluxes.o \
 	hydro_rk/Grid_PrepareVelocityNormalization.o \
 	hydro_rk/Grid_PrepareAlfvenVelocityNormalization.o \
 	hydro_rk/Grid_NormalizeVelocities.o \
 	hydro_rk/Grid_NormalizeMagneticFields.o \
-        hydro_rk/Turbulence_Generator.o \
         hydro_rk/HLL_PLM.o \
         hydro_rk/HLL_PPM.o \
         hydro_rk/HLLC_PLM.o \
@@ -1202,21 +979,12 @@ OBJS_HYDRO_RK = \
         hydro_rk/Riemann_HLL.o \
         hydro_rk/Riemann_HLLC.o \
         hydro_rk/Riemann_LLF.o \
-        hydro_rk/TurbulenceInitialize.o \
-        hydro_rk/CollapseMHD3DInitialize.o \
         hydro_rk/Grid_AddAmbipolarDiffusion.o \
         hydro_rk/Grid_AddResistivity.o \
-        hydro_rk/Grid_CollapseMHD3DInitializeGrid.o \
-        hydro_rk/Grid_MHD1DTestInitializeGrid.o \
-        hydro_rk/Grid_MHD1DTestWavesInitializeGrid.o \
-        hydro_rk/Grid_MHD2DTestInitializeGrid.o \
-        hydro_rk/Grid_MHD3DTestInitializeGrid.o \
         hydro_rk/Grid_MHD3D.o \
         hydro_rk/Grid_MHDRK2_1stStep.o \
         hydro_rk/Grid_MHDRK2_2ndStep.o \
         hydro_rk/Grid_MHDSourceTerms.o \
-        hydro_rk/Grid_MHDTurbulenceInitializeGrid.o \
-        hydro_rk/Grid_MHDDecayingRandomFieldInitializeGrid.o \
         hydro_rk/Grid_ReduceWindBoundary.o \
         hydro_rk/Grid_SaveMHDSubgridFluxes.o \
         hydro_rk/Grid_UpdateMHDPrim.o \
@@ -1226,16 +994,10 @@ OBJS_HYDRO_RK = \
         hydro_rk/HLL_PPM_MHD.o \
         hydro_rk/HLLD_PLM_MHD.o \
         hydro_rk/HLLD_Zero_MHD.o \
-        hydro_rk/MHD1DTestInitialize.o \
-        hydro_rk/MHD1DTestWavesInitialize.o \
-        hydro_rk/MHD2DTestInitialize.o \
-        hydro_rk/MHD3DTestInitialize.o \
         hydro_rk/MHDLine.o \
         hydro_rk/MHDSweepX.o \
         hydro_rk/MHDSweepY.o \
 	hydro_rk/MHDSweepZ.o \
-	hydro_rk/MHDTurbulenceInitialize.o \
-	hydro_rk/MHDDecayingRandomFieldInitialize.o \
 	hydro_rk/Riemann_HLL_MHD.o \
 	hydro_rk/Riemann_HLLD_MHD.o \
 	hydro_rk/Riemann_LLF_MHD.o \

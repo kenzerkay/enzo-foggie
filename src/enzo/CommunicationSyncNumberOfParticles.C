@@ -44,14 +44,14 @@ int CommunicationSyncNumberOfParticles(HierarchyEntry *GridHierarchyPointer[],
       buffer[idx] = GridHierarchyPointer[i]->GridData->ReturnNumberOfParticles();
       buffer[idx+1] = GridHierarchyPointer[i]->GridData->ReturnNumberOfStars();
       buffer[idx+2] = GridHierarchyPointer[i]->GridData->ReturnNumberOfActiveParticles();
-      for (j = 0; j < MAX_ACTIVE_PARTICLE_TYPES; j++) {
-        if (j < EnabledActiveParticlesCount) {
-          buffer[idx+3+j] = GridHierarchyPointer[i]->GridData->
-            ReturnNumberOfActiveParticlesOfThisType(j);
-        } else {
-          buffer[idx+3+j] = 0.;
-        }
-      }
+      // for (j = 0; j < MAX_ACTIVE_PARTICLE_TYPES; j++) {
+      //   if (j < EnabledActiveParticlesCount) {
+      //     // buffer[idx+3+j] = GridHierarchyPointer[i]->GridData->
+      //       // ReturnNumberOfActiveParticlesOfThisType(j);
+      //   } else {
+      //     buffer[idx+3+j] = 0.;
+      //   }
+      // }
       for (j = 0; j < NUM_PARTICLE_TYPES; j++) {
         buffer[idx+3+MAX_ACTIVE_PARTICLE_TYPES+j] = GridHierarchyPointer[i]->GridData->
           ReturnNumberOfParticlesOfThisType(j);

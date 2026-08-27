@@ -50,8 +50,8 @@ int grid::MultiSpeciesHandler()
       this->SolveRadiativeCooling();
   }
 
-  if (ProblemType == 62)
-    this->CoolingTestResetEnergies();
+  // if (ProblemType == 62)
+  //   this->CoolingTestResetEnergies();
 
   LCAPERF_STOP("grid_MultiSpeciesHandler");
   return SUCCESS;

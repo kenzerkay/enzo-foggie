@@ -36,17 +36,17 @@ int grid::SetExternalBoundaryValues(ExternalBoundary *Exterior)
  
   /* For Wave Pool problem, compute the new inflow boundary conditions. */
  
-  if (ProblemType == 2)
-    if (Exterior->SetWavePoolBoundary(Time) == FAIL) {
-      ENZO_FAIL("Error in exterior->SetWavePoolBoundary.\n");
-    }
+  // if (ProblemType == 2)
+  //   if (Exterior->SetWavePoolBoundary(Time) == FAIL) {
+  //     ENZO_FAIL("Error in exterior->SetWavePoolBoundary.\n");
+  //   }
  
-  /* For Shock Pool problem, compute the new inflow boundary conditions. */
+  // /* For Shock Pool problem, compute the new inflow boundary conditions. */
  
-  if (ProblemType == 3)
-    if (Exterior->SetShockPoolBoundary(Time) == FAIL) {
-      ENZO_FAIL("Error in exterior->SetShockPoolBoundary.\n");
-    }
+  // if (ProblemType == 3)
+  //   if (Exterior->SetShockPoolBoundary(Time) == FAIL) {
+  //     ENZO_FAIL("Error in exterior->SetShockPoolBoundary.\n");
+  //   }
 
   /* For Galaxy Sim w/ ICM Wind, compute the new inflow boundary conditions. */
 
@@ -55,30 +55,30 @@ int grid::SetExternalBoundaryValues(ExternalBoundary *Exterior)
       ENZO_FAIL("Error in exterior->SetGalaxySimulationBoundary.\n");
     }
  
-  /* For the DoubleMach problem, set the bew inflow boundary conditions. */
+  // /* For the DoubleMach problem, set the bew inflow boundary conditions. */
  
-  if (ProblemType == 4)
-    if (Exterior->SetDoubleMachBoundary(Time, CellLeftEdge[0], CellWidth[0])
-	== FAIL) {
-      ENZO_FAIL("Error in exterior->SetDoubleMachBoundary.\n");
-    }
+  // if (ProblemType == 4)
+  //   if (Exterior->SetDoubleMachBoundary(Time, CellLeftEdge[0], CellWidth[0])
+	// == FAIL) {
+  //     ENZO_FAIL("Error in exterior->SetDoubleMachBoundary.\n");
+  //   }
  
-  /* For 2D/3D Noh problem apply time-dependent boundary conditions on Right faces
-     before applying reflecting BCs on the Left ones, thus, taking care of the
-     (0,1) and (1,0) corners. */
+  // /* For 2D/3D Noh problem apply time-dependent boundary conditions on Right faces
+  //    before applying reflecting BCs on the Left ones, thus, taking care of the
+  //    (0,1) and (1,0) corners. */
 
-  if (ProblemType == 9)
-    if (this->ComputeExternalNohBoundary() == FAIL) {
-      ENZO_FAIL("Error in grid->ComputeExternalNohBoundary.\n");
-    }
+  // if (ProblemType == 9)
+  //   if (this->ComputeExternalNohBoundary() == FAIL) {
+  //     ENZO_FAIL("Error in grid->ComputeExternalNohBoundary.\n");
+  //   }
 
-  /* For the SetWengenCollidingFlowBoundary problem, set the inflow boundary conditions. */
+  // /* For the SetWengenCollidingFlowBoundary problem, set the inflow boundary conditions. */
  
-  if (ProblemType == 201 && (EOSSoundSpeed > 0)) 
-    if (Exterior->SetWengenCollidingFlowBoundary(Time, CellLeftEdge[0], CellWidth[0])
-	== FAIL) {
-      ENZO_FAIL("Error in exterior->SetWengenCollidingFlowBoundary.\n");
-    }
+  // if (ProblemType == 201 && (EOSSoundSpeed > 0)) 
+  //   if (Exterior->SetWengenCollidingFlowBoundary(Time, CellLeftEdge[0], CellWidth[0])
+	// == FAIL) {
+  //     ENZO_FAIL("Error in exterior->SetWengenCollidingFlowBoundary.\n");
+  //   }
 
 
   /* Compute offset from corner of domain. */

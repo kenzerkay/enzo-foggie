@@ -33,7 +33,15 @@
 
 /* Pi */
 
-#define pi                              3.14159265358979323846
+#ifdef pi
+  #undef pi
+#endif
+
+// This acts as a protective layer against standard library namespaces
+namespace {
+    const double enzo_pi = 3.14159265358979323846;
+}
+#define pi enzo_pi
 
 /* ergs per eV */
 

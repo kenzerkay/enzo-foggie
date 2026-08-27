@@ -143,10 +143,10 @@ int CommunicationCombineGrids(HierarchyEntry *OldHierarchy,
 	        OldGrid->ReturnNumberOfParticles(), -1) == FAIL) {
       ENZO_FAIL("Error in grid->CommunicationSendParticles.\n");
     }
-    if (OldGrid->CommunicationSendActiveParticles(
-            NewGrid, NewProc, false) == FAIL) {
-      ENZO_FAIL("Error in grid->CommunicationSendActiveParticles.\n");
-    }
+    // if (OldGrid->CommunicationSendActiveParticles(
+    //         NewGrid, NewProc, false) == FAIL) {
+    //   ENZO_FAIL("Error in grid->CommunicationSendActiveParticles.\n");
+    // }
  
     /* Next Grid */
  

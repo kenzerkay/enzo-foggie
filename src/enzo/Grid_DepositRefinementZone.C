@@ -112,11 +112,11 @@ int grid::DepositRefinementZone(int level, FLOAT* ParticlePosition,
     for (j = 0; j < GridDimension[1]; j++) {
       for (k = 0; k < GridDimension[2]; k++) {
 	index = (k*GridDimension[1]+j)*GridDimension[0]+i;
-	dist2 = calc_dist2(CellLeftEdge[0][i] + CellSize/2.,
-		  CellLeftEdge[1][j] + CellSize/2.,
-		  CellLeftEdge[2][k] + CellSize/2.,
-		  ParticlePosition[0], ParticlePosition[1], ParticlePosition[2],
-		  period);
+	// dist2 = calc_dist2(CellLeftEdge[0][i] + CellSize/2.,
+	// 	  CellLeftEdge[1][j] + CellSize/2.,
+	// 	  CellLeftEdge[2][k] + CellSize/2.,
+	// 	  ParticlePosition[0], ParticlePosition[1], ParticlePosition[2],
+	// 	  period);
 	if (dist2 <= rad2) {
 	  FlaggingField[index] = 1;
 	  NumberOfFlaggedCells++;

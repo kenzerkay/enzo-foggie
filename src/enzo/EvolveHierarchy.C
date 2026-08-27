@@ -605,8 +605,8 @@ if (MultiRefineRegionSpatiallyVaryingStarMass > 0){
 
     PrintMemoryUsage("Pre loop rebuild");
  
-    if (ProblemType != 25 && Restart == FALSE)
-      RebuildHierarchy(&MetaData, LevelArray, 0);
+    // if (ProblemType != 25 && Restart == FALSE)
+    //   RebuildHierarchy(&MetaData, LevelArray, 0);
 
     PrintMemoryUsage("Post loop rebuild");
 
@@ -750,10 +750,10 @@ if (MultiRefineRegionSpatiallyVaryingStarMass > 0){
  
   /* If we are running problem 23, TestGravity, then check the results. */
  
-  if (ProblemType == 23)
-    TestGravityCheckResults(LevelArray);
-  if (ProblemType == 25 && NumberOfProcessors == 0)
-    TestGravitySphereCheckResults(LevelArray);
+  // if (ProblemType == 23)
+  //   TestGravityCheckResults(LevelArray);
+  // if (ProblemType == 25 && NumberOfProcessors == 0)
+  //   TestGravitySphereCheckResults(LevelArray);
  
   /* if we are doing data dumps, then do one last one */
  

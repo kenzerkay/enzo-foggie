@@ -94,10 +94,10 @@ int ProjectToPlane2(char *ParameterFile, HierarchyEntry &TopGrid,
 
   /* Read radiative transfer parameters */
 
-#ifdef TRANSFER
-  RadiativeTransferInitialize(ParameterFile, TopGrid, MetaData, *Exterior,
-			      ImplicitSolver, LevelArray);
-#endif
+// #ifdef TRANSFER
+//   RadiativeTransferInitialize(ParameterFile, TopGrid, MetaData, *Exterior,
+// 			      ImplicitSolver, LevelArray);
+// #endif
 
   /* Copy ProjectStart and ProjectEnd into long int version so we can do
      deep projections. */

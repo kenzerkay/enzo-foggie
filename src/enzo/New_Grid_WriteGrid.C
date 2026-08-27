@@ -794,7 +794,7 @@ int grid::Group_WriteGrid(FILE *fptr, char *base_name, int grid_id, HDF5_hid_t f
     else
       this->SortParticlesByNumber();
 
-    this->SortActiveParticlesByNumber();
+    // this->SortActiveParticlesByNumber();
 
     /* Create a temporary buffer (64 bit). */
 

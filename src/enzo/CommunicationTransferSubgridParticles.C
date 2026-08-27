@@ -161,9 +161,9 @@ int CommunicationTransferSubgridParticles(LevelHierarchyEntry *LevelArray[],
       (GridPointers, NumberOfGrids, StarsToMove, Zero, Zero, 
        StarSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, TRUE);
 
-    Grids[grid1]->GridData->TransferSubgridActiveParticles
-      (GridPointers, NumberOfGrids, APNumberToMove, Zero, Zero,
-       APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, TRUE);
+    // Grids[grid1]->GridData->TransferSubgridActiveParticles
+    //   (GridPointers, NumberOfGrids, APNumberToMove, Zero, Zero,
+    //    APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, TRUE);
 
     Grids[grid1]->GridData->TransferSubgridParticles
       (GridPointers, NumberOfGrids, NumberToMove, Zero, Zero, 
@@ -195,9 +195,9 @@ int CommunicationTransferSubgridParticles(LevelHierarchyEntry *LevelArray[],
       (GridPointers, NumberOfGrids, StarsToMove, Zero, Zero,
        StarSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, FALSE);
 
-    Grids[grid1]->GridData->TransferSubgridActiveParticles
-      (GridPointers, NumberOfGrids, APNumberToMove, Zero, Zero,
-       APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, FALSE);
+    // Grids[grid1]->GridData->TransferSubgridActiveParticles
+    //   (GridPointers, NumberOfGrids, APNumberToMove, Zero, Zero,
+    //    APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, TRUE, FALSE);
 
     Grids[grid1]->GridData->TransferSubgridParticles
       (GridPointers, NumberOfGrids, NumberToMove, Zero, Zero, 
@@ -214,8 +214,8 @@ int CommunicationTransferSubgridParticles(LevelHierarchyEntry *LevelArray[],
 			      SharedList);
   CommunicationShareStars(StarsToMove, StarSendList, StarNumberOfReceives,
 			  StarSharedList);
-  CommunicationShareActiveParticles(APNumberToMove, APSendList, APNumberOfReceives,
-                                    APSharedList);
+  // CommunicationShareActiveParticles(APNumberToMove, APSendList, APNumberOfReceives,
+  //                                   APSharedList);
 
   int TotalNumberOfReceives = NumberOfReceives;
   int TotalStarNumberOfReceives = StarNumberOfReceives;
@@ -299,9 +299,9 @@ int CommunicationTransferSubgridParticles(LevelHierarchyEntry *LevelArray[],
         if (jend == APNumberOfReceives) break;
       }
       
-      GridPointers[j]->TransferSubgridActiveParticles
-                    (GridPointers, NumberOfGrids, APNumberToMove, jstart, jend,
-                     APSharedList, KeepLocal, ParticlesAreLocal, COPY_IN, TRUE);
+      // GridPointers[j]->TransferSubgridActiveParticles
+      //               (GridPointers, NumberOfGrids, APNumberToMove, jstart, jend,
+      //                APSharedList, KeepLocal, ParticlesAreLocal, COPY_IN, TRUE);
       
       jstart = jend;
     } // ENDFOR grids

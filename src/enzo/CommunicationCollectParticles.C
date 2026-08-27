@@ -197,9 +197,9 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
             (SubgridPointers, NumberOfSubgrids, StarsToMove, Zero, Zero, 
              StarSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, TRUE);
         
-        GridHierarchyPointer[j]->GridData->TransferSubgridActiveParticles
-          (SubgridPointers, NumberOfSubgrids, APNumberToMove, Zero, Zero,
-           APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, TRUE);
+        // GridHierarchyPointer[j]->GridData->TransferSubgridActiveParticles
+        //   (SubgridPointers, NumberOfSubgrids, APNumberToMove, Zero, Zero,
+        //    APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, TRUE);
         
         // SendList is NULL at this point, but this is ok because it will not be
         // manipulated in this function since CountOnly (the last argument) is
@@ -239,9 +239,9 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
             (SubgridPointers, NumberOfSubgrids, StarsToMove, Zero, Zero,
              StarSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, FALSE);
 
-    GridHierarchyPointer[j]->GridData->TransferSubgridActiveParticles
-        (SubgridPointers, NumberOfSubgrids, APNumberToMove, Zero, Zero,
-         APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, FALSE);
+    // GridHierarchyPointer[j]->GridData->TransferSubgridActiveParticles
+    //     (SubgridPointers, NumberOfSubgrids, APNumberToMove, Zero, Zero,
+    //      APSendList, KeepLocal, ParticlesAreLocal, COPY_OUT, FALSE, FALSE);
     
 	GridHierarchyPointer[j]->GridData->TransferSubgridParticles
 	    (SubgridPointers, NumberOfSubgrids, NumberToMove, Zero, Zero, 
@@ -289,8 +289,8 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
       if (MoveStars)
         CommunicationShareStars(StarsToMove, StarSendList, StarNumberOfReceives,
                                 StarSharedList);
-      CommunicationShareActiveParticles(
-          APNumberToMove, APSendList, APNumberOfReceives, APSharedList);
+      // CommunicationShareActiveParticles(
+      //     APNumberToMove, APSendList, APNumberOfReceives, APSharedList);
 
     } // ENDELSE local
 
@@ -365,9 +365,9 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
           continue;
         }
 
-        SubgridPointers[j]->TransferSubgridActiveParticles(
-            SubgridPointers, NumberOfSubgrids, APNumberToMove, jstart, jend,
-            APSharedList, KeepLocal, ParticlesAreLocal, COPY_IN);
+        // SubgridPointers[j]->TransferSubgridActiveParticles(
+        //     SubgridPointers, NumberOfSubgrids, APNumberToMove, jstart, jend,
+        //     APSharedList, KeepLocal, ParticlesAreLocal, COPY_IN);
 
         jstart = jend;
       } // ENDFOR grids
@@ -537,10 +537,10 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
 	  (j, StarsToMove, StartNum, Zero, StarSendList, COPY_OUT);
     } // ENDIF MoveStars
 
-    StartNum = 0;
-    for (j = StartGrid; j < EndGrid; j++)
-      GridHierarchyPointer[j]->GridData->CollectActiveParticles
-        (j, APNumberToMove, StartNum, Zero, APSendList, COPY_OUT);
+    // StartNum = 0;
+    // for (j = StartGrid; j < EndGrid; j++)
+    //   GridHierarchyPointer[j]->GridData->CollectActiveParticles
+    //     (j, APNumberToMove, StartNum, Zero, APSendList, COPY_OUT);
 
     /* Share the particle move list */
 
@@ -552,8 +552,8 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
     if (MoveStars)
       CommunicationShareStars(StarsToMove, StarSendList, StarNumberOfReceives,
 			      StarSharedList);
-    CommunicationShareActiveParticles(APNumberToMove, APSendList,
-        APNumberOfReceives, APSharedList);
+    // CommunicationShareActiveParticles(APNumberToMove, APSendList,
+    //     APNumberOfReceives, APSharedList);
     /*******************************************************************/
     /****************** Copy particles back to grids. ******************/
     /*******************************************************************/
@@ -625,8 +625,8 @@ int CommunicationCollectParticles(LevelHierarchyEntry *LevelArray[],
             break;
         }
 
-        GridHierarchyPointer[j]->GridData->CollectActiveParticles(
-            j, APNumberToMove, jstart, jend, APSharedList, COPY_IN);
+        // GridHierarchyPointer[j]->GridData->CollectActiveParticles(
+        //     j, APNumberToMove, jstart, jend, APSharedList, COPY_IN);
 
         jstart = jend;
       } // ENDFOR grids

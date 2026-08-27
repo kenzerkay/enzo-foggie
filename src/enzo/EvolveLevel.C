@@ -435,8 +435,8 @@ int EvolveLevel(TopGridData *MetaData, LevelHierarchyEntry *LevelArray[],
 
     /* Initialize the star particles */
 
-    ActiveParticleInitialize(Grids, MetaData, NumberOfGrids, LevelArray,
-                             level);
+    // ActiveParticleInitialize(Grids, MetaData, NumberOfGrids, LevelArray,
+    //                          level);
     
     Star *AllStars = NULL;
     StarParticleInitialize(Grids, MetaData, NumberOfGrids, LevelArray,
@@ -446,22 +446,22 @@ int EvolveLevel(TopGridData *MetaData, LevelHierarchyEntry *LevelArray[],
 
     ClusterSMBHSumGasMass(Grids, NumberOfGrids, level);
 
-#ifdef TRANSFER
-    /* Initialize the radiative transfer */
+// #ifdef TRANSFER
+//     /* Initialize the radiative transfer */
 
-    TIMER_STOP(level_name);
-    RadiativeTransferPrepare(LevelArray, level, MetaData, AllStars, 
-			     dtLevelAbove);
-    RadiativeTransferCallFLD(LevelArray, level, MetaData, AllStars, 
-			     ImplicitSolver);
+//     TIMER_STOP(level_name);
+//     RadiativeTransferPrepare(LevelArray, level, MetaData, AllStars, 
+// 			     dtLevelAbove);
+//     RadiativeTransferCallFLD(LevelArray, level, MetaData, AllStars, 
+// 			     ImplicitSolver);
 
-    /* Solve the radiative transfer */
+//     /* Solve the radiative transfer */
 	
-    GridTime = Grids[0]->GridData->ReturnTime() + dtThisLevel[level];
-    EvolvePhotons(MetaData, LevelArray, AllStars, GridTime, level);
-    TIMER_START(level_name);
+//     GridTime = Grids[0]->GridData->ReturnTime() + dtThisLevel[level];
+//     EvolvePhotons(MetaData, LevelArray, AllStars, GridTime, level);
+//     TIMER_START(level_name);
  
-#endif /* TRANSFER */
+// #endif /* TRANSFER */
 
     /* trying to clear Emissivity here after FLD uses it, doesn't work */
  
@@ -693,9 +693,9 @@ int EvolveLevel(TopGridData *MetaData, LevelHierarchyEntry *LevelArray[],
       Grids[grid1]->GridData->StarParticleHandler
 	(Grids[grid1]->NextGridNextLevel, level ,dtLevelAbove, TopGridTimeStep);
 
-      Grids[grid1]->GridData->ActiveParticleHandler
-        (Grids[grid1]->NextGridNextLevel, level ,dtLevelAbove,
-         NumberOfNewActiveParticles[grid1]);
+      // Grids[grid1]->GridData->ActiveParticleHandler
+      //   (Grids[grid1]->NextGridNextLevel, level ,dtLevelAbove,
+      //    NumberOfNewActiveParticles[grid1]);
 
       /* Include shock-finding */
 
@@ -765,8 +765,8 @@ int EvolveLevel(TopGridData *MetaData, LevelHierarchyEntry *LevelArray[],
     } //end loop over grids
 
     /* Finalize (accretion, feedback etc) for Active particles. */
-    ActiveParticleFinalize(Grids, MetaData, NumberOfGrids, LevelArray,
-                           level, NumberOfNewActiveParticles);
+    // ActiveParticleFinalize(Grids, MetaData, NumberOfGrids, LevelArray,
+    //                        level, NumberOfNewActiveParticles);
     /* Finalize (accretion, feedback, etc.) star particles */
     StarParticleFinalize(Grids, MetaData, NumberOfGrids, LevelArray,
 			 level, AllStars, TotalStarParticleCountPrevious, OutputNow);

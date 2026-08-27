@@ -299,10 +299,10 @@ int CommunicationReceiveHandler(fluxes **SubgridFluxesEstimate[],
 	  SendField = CommunicationReceiveArgumentInt[0][index];
 	  errcode = grid_one->CopyActiveZonesFromGrid(grid_two, EdgeOffset, SendField);
 
-	case 22:
-	  errcode = grid_one->CommunicationSendActiveParticles
-	    (grid_two, MyProcessorNumber);
-	  break;
+	// case 22:
+	//   errcode = grid_one->CommunicationSendActiveParticles
+	//     (grid_two, MyProcessorNumber);
+	//   break;
 
 	default:
 	  ENZO_VFAIL("Unrecognized call type %"ISYM"\n", 

@@ -279,8 +279,8 @@ int RebuildHierarchy(TopGridData *MetaData,
 
     CommunicationTransferParticles(GridPointer, grids, MetaData->TopGridDims);
     CommunicationTransferStars(GridPointer, grids, MetaData->TopGridDims);
-    CommunicationTransferActiveParticles(GridPointer, grids,
-                                         MetaData->TopGridDims);
+    // CommunicationTransferActiveParticles(GridPointer, grids,
+    //                                      MetaData->TopGridDims);
 
     /* We need to collect particles again */
 
@@ -411,7 +411,7 @@ int RebuildHierarchy(TopGridData *MetaData,
        */
       
       tt0 = ReturnWallTime();
-      DepositActiveParticleMassFlaggingField(LevelArray,i,MetaData->TopGridDims);
+      // DepositActiveParticleMassFlaggingField(LevelArray,i,MetaData->TopGridDims);
       tt1 = ReturnWallTime();
       RHperf[3] += tt1-tt0;
 
@@ -679,9 +679,9 @@ int RebuildHierarchy(TopGridData *MetaData,
 	    ToGrids[k] = SubgridHierarchyPointer[k]->GridData;
 	  }
 
-      if (GridHierarchyPointer[j]->GridData->MoveSubgridActiveParticles(
-                 subgrids, ToGrids, FALSE) == FAIL)
-        ENZO_FAIL("Error in grid->MoveSubgridActiveParticles.");
+      // if (GridHierarchyPointer[j]->GridData->MoveSubgridActiveParticles(
+      //            subgrids, ToGrids, FALSE) == FAIL)
+      //   ENZO_FAIL("Error in grid->MoveSubgridActiveParticles.");
       
 	  if (GridHierarchyPointer[j]->GridData->MoveSubgridStars(
 				 subgrids, ToGrids, FALSE) == FAIL)

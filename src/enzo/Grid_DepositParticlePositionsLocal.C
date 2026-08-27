@@ -77,7 +77,7 @@ int grid::DepositParticlePositionsLocal(FLOAT DepositTime, int DepositField,
   for (dim = 0; dim < GridRank; dim++)
     ActiveParticlePosition[dim] = new FLOAT[NumberOfActiveParticles];
 
-  this->GetActiveParticlePosition(ActiveParticlePosition);
+  // this->GetActiveParticlePosition(ActiveParticlePosition);
  
   /* If the target field is MASS_FLAGGING_FIELD, then set masses of
      particles which are too large to zero (to prevent run-away refinement). */

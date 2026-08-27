@@ -382,8 +382,8 @@ int PrepareDensityField(LevelHierarchyEntry *LevelArray[],
      temporary mass buffers.
    */
   
-  ActiveParticleDepositMass(Grids, MetaData, NumberOfGrids, LevelArray,
-                            level);
+  // ActiveParticleDepositMass(Grids, MetaData, NumberOfGrids, LevelArray,
+  //                           level);
  
   /************************************************************************/
   /* Compute the potential for the top grid. */

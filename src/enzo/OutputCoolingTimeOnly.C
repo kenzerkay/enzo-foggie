@@ -102,17 +102,17 @@ int OutputCoolingTimeOnly(char *ParameterFile,
 
   /* Initialize radiative transfer parameters, if needed */
 
-#ifdef TRANSFER
-  FILE *fptr;
+// #ifdef TRANSFER
+//   FILE *fptr;
 
-  if ((fptr = fopen(ParameterFile, "r")) == NULL) {
-    ENZO_VFAIL("Error opening ParameterFile %s\n", ParameterFile)
-  }
+//   if ((fptr = fopen(ParameterFile, "r")) == NULL) {
+//     ENZO_VFAIL("Error opening ParameterFile %s\n", ParameterFile)
+//   }
 
-  RadiativeTransferReadParameters(fptr);
+//   RadiativeTransferReadParameters(fptr);
 
-  fclose(fptr);
-#endif /* TRANSFER */
+//   fclose(fptr);
+// #endif /* TRANSFER */
 
   // Negative number to indicate that this won't propagate to the
   // parameter, and only compute the cooling time.

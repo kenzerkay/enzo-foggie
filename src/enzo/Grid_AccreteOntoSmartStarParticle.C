@@ -148,7 +148,7 @@ int grid::AccreteOntoSmartStarParticle(
     (Vel[2]+delta_vpart[2])
     };
 
-  ThisParticle->SetVelocity(NewVelocity);
+  // ThisParticle->SetVelocity(NewVelocity);
 #endif
   /* 
    * This value is the actual accretion rate onto the SmartStar. It was initially

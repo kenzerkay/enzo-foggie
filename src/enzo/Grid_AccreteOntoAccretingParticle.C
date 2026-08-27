@@ -452,7 +452,7 @@ int grid::AccreteOntoAccretingParticle(
     (Mass*Vel[2]+AccretedMomentum[2])/(Mass+AccretedMass*CellVolume)
     };
 
-  ThisParticle->SetVelocity(NewVelocity);
+//   ThisParticle->SetVelocity(NewVelocity);
   ThisParticle->AddMass(AccretedMass);
 
   /* Clean up */

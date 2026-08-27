@@ -177,7 +177,7 @@ int grid::UpdateParticleVelocity(float TimeStep)
 #endif /* VELOCITY_METHOD3 */
 
           }
-          ActiveParticles[i]->SetVelocity(apvel);
+          // ActiveParticles[i]->SetVelocity(apvel);
         }
       }
       else {
@@ -190,7 +190,7 @@ int grid::UpdateParticleVelocity(float TimeStep)
           for (dim = 0; dim < GridRank; dim++)
             apvel[dim] += ActiveParticleAcceleration[dim][i] * TimeStep;
         
-          ActiveParticles[i]->SetVelocity(apvel);
+          // ActiveParticles[i]->SetVelocity(apvel);
         }
       }
     }

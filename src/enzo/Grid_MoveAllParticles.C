@@ -184,7 +184,7 @@ int grid::MoveAllParticles(int NumberOfGrids, grid* FromGrid[])
     FromGrid[grid]->DeleteActiveParticles();
   }
 
-  this->AddActiveParticles(MoveParticles, 0, NumberOfSubgridActiveParticles);
+  // this->AddActiveParticles(MoveParticles, 0, NumberOfSubgridActiveParticles);
  
   return SUCCESS;
 }

@@ -89,25 +89,25 @@ int grid::UpdateParticlePosition(float TimeStep, int OffProcessorUpdate)
     }
   }
 
-  if (NumberOfActiveParticles > 0) {
-    for (i = 0; i < NumberOfActiveParticles; i++) {
+  // if (NumberOfActiveParticles > 0) {
+  //   for (i = 0; i < NumberOfActiveParticles; i++) {
 
-      FLOAT* appos;
-      float* apvel;
-      appos = ActiveParticles[i]->ReturnPosition();
-      apvel = ActiveParticles[i]->ReturnVelocity();
+  //     FLOAT* appos;
+  //     float* apvel;
+  //     appos = ActiveParticles[i]->ReturnPosition();
+  //     apvel = ActiveParticles[i]->ReturnVelocity();
 
-      for (dim = 0; dim < GridRank; dim++)
-        appos[dim] += Coefficient*apvel[dim];
+  //     for (dim = 0; dim < GridRank; dim++)
+  //       appos[dim] += Coefficient*apvel[dim];
 
-      ActiveParticles[i]->SetPosition(appos);
+  //     ActiveParticles[i]->SetPosition(appos);
 
-      FLOAT period[3];
-      for (dim = 0; dim < 3; dim++) {
-        period[dim] = DomainRightEdge[dim] - DomainLeftEdge[dim];
-      }
-      ActiveParticles[i]->SetPositionPeriod(period);
-    }
-  }
+  //     FLOAT period[3];
+  //     for (dim = 0; dim < 3; dim++) {
+  //       period[dim] = DomainRightEdge[dim] - DomainLeftEdge[dim];
+  //     }
+  //     ActiveParticles[i]->SetPositionPeriod(period);
+  //   }
+  // }
   return SUCCESS;
 }

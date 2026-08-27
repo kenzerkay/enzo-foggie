@@ -1247,16 +1247,16 @@ int WriteParameterFile(FILE *fptr, TopGridData &MetaData, char *name = NULL)
   /* If radiative transfer, write parameters.  If photon test, write
      source data. */
 
-#ifdef TRANSFER
-  if (RadiativeTransferWriteParameters(fptr) == FAIL) {
-    ENZO_FAIL("Error in RadiativeTransferWriteParameters.\n");
-  }
+// #ifdef TRANSFER
+//   if (RadiativeTransferWriteParameters(fptr) == FAIL) {
+//     ENZO_FAIL("Error in RadiativeTransferWriteParameters.\n");
+//   }
 
-  if (ProblemType == 50)
-    if (WritePhotonSources(fptr, MetaData.Time) == FAIL) {
-      ENZO_FAIL("Error in WritePhotonSources.\n");
-    }
-#endif
+//   if (ProblemType == 50)
+//     if (WritePhotonSources(fptr, MetaData.Time) == FAIL) {
+//       ENZO_FAIL("Error in WritePhotonSources.\n");
+//     }
+// #endif
 
   /* Write out Grackle specific parameters */
 

@@ -127,10 +127,10 @@ int TracerParticlesAddToRestart_DoIt(char * filename, HierarchyEntry *TopGrid,
   }
  
  
-  Temp = TopGrid;
-  PINT ParticleCount = 0;
-  RecursivelySetParticleCount(Temp, &ParticleCount);
-  MetaData->NumberOfParticles = ParticleCount;
+  // Temp = TopGrid;
+  // PINT ParticleCount = 0;
+  // RecursivelySetParticleCount(Temp, &ParticleCount);
+  // MetaData->NumberOfParticles = ParticleCount;
  
   return SUCCESS;
 }

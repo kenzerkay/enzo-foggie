@@ -58,7 +58,7 @@ int grid::InterpolateParticlePositions(grid *FromGrid, int DifferenceType)
       FLOAT **ActiveParticlePosition = new FLOAT*[GridRank];
       for (dim1 = 0; dim1 < GridRank; dim1++)
         ActiveParticlePosition[dim1] = new FLOAT[NumberOfActiveParticles];
-      this->GetActiveParticlePosition(ActiveParticlePosition);
+      // this->GetActiveParticlePosition(ActiveParticlePosition);
 
       if (FromGrid->InterpolatePositions(ActiveParticlePosition, dim,
                                          ActiveParticleAcceleration[dim],
@@ -66,7 +66,7 @@ int grid::InterpolateParticlePositions(grid *FromGrid, int DifferenceType)
         ENZO_FAIL("Error in grid->InterpolatePositions.\n");
       }
       /* Reset Active Particle positions if required */
-      ActiveParticleResetAccelerations(ActiveParticleAcceleration[dim]);
+      // ActiveParticleResetAccelerations(ActiveParticleAcceleration[dim]);
 
       for (dim1 = 0; dim1 < GridRank; dim1++)
         delete [] ActiveParticlePosition[dim1];
