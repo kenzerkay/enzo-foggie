@@ -170,15 +170,15 @@ static int load_galaxy_table(const char *filename) {
   status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_density_table);
   H5Sclose(dsp); H5Dclose(dset);
 
-  // temperature
-  dset = H5Dopen(file_id, "temperature");
-  if (dset < 0) { H5Fclose(file_id); return 0; }
-  dsp = H5Dget_space(dset);
-  hsize_t tdims[3]; H5Sget_simple_extent_dims(dsp, tdims, NULL);
-  // Expect same dims
-  Galaxy_temperature_table = new double[ntot];
-  status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_temperature_table);
-  H5Sclose(dsp); H5Dclose(dset);
+  // // temperature
+  // dset = H5Dopen(file_id, "temperature");
+  // if (dset < 0) { H5Fclose(file_id); return 0; }
+  // dsp = H5Dget_space(dset);
+  // hsize_t tdims[3]; H5Sget_simple_extent_dims(dsp, tdims, NULL);
+  // // Expect same dims
+  // Galaxy_temperature_table = new double[ntot];
+  // status = H5Dread(dset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL, H5P_DEFAULT, Galaxy_temperature_table);
+  // H5Sclose(dsp); H5Dclose(dset);
 
   H5Fclose(file_id);
   GalaxyTableLoaded = true;
@@ -554,7 +554,7 @@ int grid::GalaxySimulationInitializeGrid(double DiskRadius,
       double y_kpc = (y - DiskPosition[1]) * LengthUnits / CM_PER_KPC;
       double z_kpc = (z - DiskPosition[2]) * LengthUnits / CM_PER_KPC;
       double dens_phys = sample_table_trilinear(x_kpc, y_kpc, z_kpc, Galaxy_density_table);
-      double temp_phys = sample_table_trilinear(x_kpc, y_kpc, z_kpc, Galaxy_temperature_table);
+      // double temp_phys = sample_table_trilinear(x_kpc, y_kpc, z_kpc, Galaxy_temperature_table);
       if (dens_phys > 0.0) density = dens_phys / DensityUnits;
       if (temp_phys > 0.0) { temperature = init_temp = temp_phys; }
     }
